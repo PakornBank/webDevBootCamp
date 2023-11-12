@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Race Registration</title>
+  </head>
+  <body>
+    <header>
+      <h1>Race Registration!</h1>
+    </header>
+    <main>
+      <form action="/submit">
+        <div>
+          <label for="firstName">First Name</label>
+          <input type="text" name="firstName" id="firstName" required />
+
+          <label for="lastName">Last Name</label>
+          <input type="text" name="lastName" id="lastName" required />
+        </div>
+        <p>Select a Race:</p>
+        <div>
+          <div>
+            <input
+              type="radio"
+              name="raceType"
+              id="funRun"
+              value="funRun"
+              required
+            />
+            <label for="funRun">Fun Run 5k</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="raceType"
+              id="half"
+              value="half"
+              required
+            />
+            <label for="half">Half Marathon</label>
+          </div>
+
+          <div>
+            <input
+              type="radio"
+              name="raceType"
+              id="full"
+              value="full"
+              required
+            />
+            <label for="full">Full Marathon</label>
+          </div>
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" required />
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            required
+            minlength="8"
+          />
+        </div>
+
+        <div>
+          <label for="group">Select Age Group</label>
+          <select name="group" id="group" required>
+            <option value="under18">under 18</option>
+            <option value="18to25">18 - 25</option>
+            <option value="26to30">26 - 30</option>
+            <option value="30up">more than 30</option>
+          </select>
+        </div>
+        <button>Register!</button>
+      </form>
+    </main>
+  </body>
+</html>

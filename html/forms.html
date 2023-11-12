@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forms</title>
+  </head>
+
+  <body>
+    <h1>Form demo</h1>
+
+    <form action="https://www.youtube.com/results">
+      <!-- this doesn't submit the form -->
+      <button type="button">Don't press this</button>
+      <div>
+        <label>Username </label>
+        <input
+          type="text"
+          placeholder="Username"
+          name="username"
+          id="username"
+        />
+      </div>
+      <div>
+        <label>Password </label>
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          id="password"
+        />
+      </div>
+      <div>
+        <label>Enter a color</label>
+        <input type="color" name="color" />
+        <label>Move this</label>
+        <input type="range" name="range" min="0" max="5" value="2" />
+        <label>what time?</label>
+        <input type="time" name="time" id="" />
+      </div>
+      <div>
+        <!-- this submit the form -->
+        <button>Submit</button>
+      </div>
+      <div>
+        <!-- this submit the form -->
+        <input type="submit" value="click me" />
+      </div>
+    </form>
+
+    <h2>Hijacking form</h2>
+    <h3>search youtube</h3>
+    <form action="https://www.youtube.com/results">
+      <div>
+        <input type="search" name="search_query" id="search_query" />
+        <button>search</button>
+      </div>
+    </form>
+
+    <h2>Check box</h2>
+    <form action="/agree">
+      <input type="checkbox" name="agree" id="agree" checked />
+      <label for="agree">agree</label>
+      <button type="submit">submit</button>
+      <br />
+      <label for="apple">apple:</label>
+      <input type="radio" name="pick_one" id="apple" value="apple" />
+
+      <label for="grape">grape:</label>
+      <input type="radio" name="pick_one" id="grape" value="grape" />
+
+      <label for="orange">orange:</label>
+      <input type="radio" name="pick_one" id="orange" value="orange" />
+    </form>
+
+    <div>
+      <form action="/meal">
+        <label for="meal">Pick a meal</label>
+        <!-- select -->
+        <select name="meal" id="meal">
+          <option value="">--select--</option>
+          <option value="fish">fish dish</option>
+          <option value="beef">beef dish</option>
+        </select>
+        <button>submit</button>
+      </form>
+    </div>
+
+    <p>
+      <label for="text">Input text</label>
+      <textarea
+        name="text"
+        id="text"
+        rows="5"
+        cols="5"
+        placeholder="Type"
+      ></textarea>
+    </p>
+
+    <h2>Validation demo</h2>
+    <form action="/dummy">
+      <label for="txt">Input text</label>
+      <!-- required input -->
+      <input type="text" name="txt" id="txt" required />
+
+      <label for="username">Username</label>
+      <!-- min/max length -->
+      <input
+        type="text"
+        name="username"
+        id="username"
+        minlength="5"
+        maxlength="10"
+      />
+
+      <label for="number">Give a number</label>
+      <!-- min/max value, works with date, month, week, time, number, range -->
+      <input type="number" id="number" name="number" min="0" max="999" />
+
+      <label for="url">url</label>
+      <!-- has default validation required -->
+      <input type="url" name="urt" id="urt" required />
+      <button>submit</button>
+    </form>
+  </body>
+</html>
