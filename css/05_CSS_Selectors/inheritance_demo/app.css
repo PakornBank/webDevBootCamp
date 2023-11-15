@@ -1,0 +1,17 @@
+/* inherit */
+body {
+    color: purple;
+}
+
+section {
+    color: aqua;
+}
+
+/* doesn't inherit */
+form {
+    color: greenyellow;
+}
+/* have to set manually */
+button, input {
+    color: inherit;
+}

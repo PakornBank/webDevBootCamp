@@ -1,0 +1,32 @@
+h1{
+    color : forestgreen;
+    background-color: rgb(255, 200, 200);
+    text-align: center;
+    font-weight: 400;
+    text-decoration: #123456 overline wavy;
+    font-size: 50px;
+    font-family: 'Segoe UI',fantasy, sans-serif;
+}
+h2 {
+    color: pink;
+}
+
+p {
+    color: skyblue;
+    background-color: yellow;
+    line-height: 2;
+    letter-spacing: 5px;
+}
+
+button{
+    color: green;
+    background-color: red;
+}
+
+body{
+    background-color: #811111;
+}
+
+a{
+    text-decoration: none;
+}
