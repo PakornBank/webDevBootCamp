@@ -1,0 +1,73 @@
+section {
+    width: 500px;
+    height: 500px;
+    background-color: blue;
+}
+
+/* the alpha (a) affect only the specified of the element */
+#rgba {
+    width: 50%;
+    height: 50%;
+    background-color: rgba(255,255,255,0.5);
+}
+ 
+/* the opacity affect all of the element */
+#opacity {
+    width: 50%;
+    height: 50%;
+    background-color: yellow;
+    opacity: 0.1;
+}
+
+div {
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    border: 3px solid black;
+    margin: 10px;
+    display: inline-block;
+}
+
+#middle {
+    background-color: white;
+}
+
+/* static position - won't move */
+#static #middle {
+       position: static;
+       top: 100px;
+}
+
+/* relative normal flow of document, doesn't affect other elements */
+#relative #middle {
+    position: relative;
+    top: 100px;
+    left: 50px;
+}
+
+#absolute {
+    position: relative;
+}
+
+/* not relative to normal flow of document, relate to nearest positioned ancestor,
+the position is changed to be relative to ancestor when offsetting the position, 
+else the initial position remain the same for the absolute element */
+#absolute #middle {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* fixed on your screen!*/
+#fixed #middle {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+}
+
+#sticky #middle {
+    position: sticky;
+    top: 0;
+    left: 0;
+}

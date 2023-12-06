@@ -1,0 +1,9 @@
+section {
+    height: 500px;
+    width: 80%;
+    /* background-image: url("https://www.eltiempo.com/files/article_main_mobile/uploads/2023/06/24/6497143a2885d.jpeg");
+    margin: 0 auto;
+    background-size: cover;
+    background-position: 50%; */
+    background: center/40% no-repeat blue url("https://www.eltiempo.com/files/article_main_mobile/uploads/2023/06/24/6497143a2885d.jpeg");
+}

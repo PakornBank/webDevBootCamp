@@ -1,0 +1,58 @@
+html {
+    font-size: 20px;
+}
+
+section {
+    background-color: #03045E;
+    width: 800px;
+    height: 800px;
+}
+
+div {
+    background-color: #023e8a;
+    width: 50%;
+    height: 50%;
+}
+
+h1 {
+    font-size: 40px;
+    border: 5px solid black;
+    line-height: 200%;
+}
+
+h2 {
+    font-size: 2em;
+    border: 0.5em solid black;
+    width: 400px;
+}
+
+p {
+    font-size: 0.8em;
+}
+
+article {
+    font-size: 50px;
+}
+
+/* em - font scales from parent font size - element (eg. button) scales from the element font size */
+
+button {
+    font-size: 1em;
+    padding: 0em 1em;
+    border-radius: 0.5em;
+    background-color: #023e8a;
+}
+
+
+/* rem scales according to html root font size */
+ul {
+    font-size: 1.5rem;
+}
+
+#rems h2{
+    font-size: 3rem;
+}
+
+#rems h3{
+    font-size: 3rem;
+}

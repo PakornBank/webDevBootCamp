@@ -1,0 +1,20 @@
+nav {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgb(195, 195, 195);
+    margin-left: calc(10%/6);
+    margin-bottom: 0.5em;
+    width: 30%;
+    padding: 1em 0;
+}
+
+hr{
+    width: 100%;
+}
+
+img {
+    width: 30%;
+    margin: calc(10%/6);
+}
