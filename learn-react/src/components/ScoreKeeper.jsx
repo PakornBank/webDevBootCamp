@@ -6,11 +6,20 @@ import { Badge } from "@chakra-ui/react";
 export default function ScoreKeeper({ player, goal }) {
   const [scores, setScores] = useState(new Array(player).fill(0));
 
+  //   const incrementScore = (index) => {
+  //     setScores((oldScores) => {
+  //       const newScores = [...oldScores];
+  //       newScores[index]++;
+  //       return newScores;
+  //     });
+  //   };
+
   const incrementScore = (index) => {
     setScores((oldScores) => {
-      const newScores = [...oldScores];
-      newScores[index]++;
-      return newScores;
+      return oldScores.map((score, idx) => {
+        if (idx === index) score++;
+        return score;
+      });
     });
   };
 
