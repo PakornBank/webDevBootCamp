@@ -8,9 +8,9 @@
 //   }
 // }
 
-export const dataFetcher = (url, header) =>
+export const dataFetcher = (url, config) =>
   axios
-    .get(url, header)
+    .get(url, config)
     .then((result) => result)
     .catch((err) => {
       console.error("ERROR!", err);

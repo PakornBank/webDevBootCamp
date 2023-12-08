@@ -3,6 +3,7 @@ import Form from "./components/Forms.jsx";
 import { Flex } from "@chakra-ui/react";
 import ShoppingList from "./components/shoppingList/ShoppingList.jsx";
 import Dadjoke from "./components/axios/Axios.jsx";
+import ShowSearch from "./components/showSearch/ShowSearch.jsx";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         {/* <ScoreKeeper player={10} goal={5}></ScoreKeeper> */}
         {/* <Form></Form> */}
         {/* <ShoppingList></ShoppingList> */}
-        <Dadjoke></Dadjoke>
+        {/* <Dadjoke></Dadjoke> */}
+        <ShowSearch></ShowSearch>
       </Flex>
     </>
   );
