@@ -28,4 +28,8 @@ yarn-error.log*
 .idea
 *.swp
 *.swo
+<<<<<<< HEAD
 .vscode/
+=======
+.vscode/
+>>>>>>> ead0954fc75b13822f1d6198f3c0acdd78c38542
