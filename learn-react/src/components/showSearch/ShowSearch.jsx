@@ -4,6 +4,7 @@ import { useState } from "react";
 const url = "https://api.tvmaze.com/search/shows";
 import { dataFetcher } from "../../utils";
 import ShowsList from "./ShowsList";
+import Navbar from "./Navbar";
 
 export default function ShowSearch() {
   const [showsData, setShowsData] = useState([]);
@@ -21,16 +22,19 @@ export default function ShowSearch() {
   };
 
   return (
-    <Flex
-      w={{ base: "100%", sm: "420px", lg: "820px", xl: "1210px" }}
-      minH={"100vh"}
-      bg={"white"}
-      align={"center"}
-      direction={"column"}
-      padding={"20px"}
-    >
-      <SearchBar handleSearch={handleSearch}></SearchBar>
-      <ShowsList showsData={showsData}></ShowsList>
-    </Flex>
+    <>
+      <Navbar></Navbar>
+      <Flex
+        w={{ base: "100%", sm: "420px", lg: "820px", xl: "1210px" }}
+        minH={"100vh"}
+        bg={"white"}
+        align={"center"}
+        direction={"column"}
+        padding={"20px"}
+      >
+        <SearchBar handleSearch={handleSearch}></SearchBar>
+        <ShowsList showsData={showsData}></ShowsList>
+      </Flex>
+    </>
   );
 }
