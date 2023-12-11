@@ -6,6 +6,9 @@ const app = express();
 //   res.send("<h1>This is my web page</h1>");
 // });
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.send("This is the home page.");
 });
@@ -15,11 +18,12 @@ app.get("/cats", (req, res) => {
 });
 
 app.get("/dogs", (req, res) => {
-  res.send("WOOF!");
+  res.send("WOOOF!");
 });
 
 app.post("/cats", (req, res) => {
-  res.send("You requested something?");
+  const { breed, age } = req.body;
+  res.send(`So you want a ${age} years old ${breed}?`);
 });
 
 app.get("/r/:subreddit", (req, res) => {
