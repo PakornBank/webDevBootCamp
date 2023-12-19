@@ -1,26 +1,31 @@
+/* eslint-disable no-unused-vars */
 const express = require("express");
 const app = express();
-const path = require("path");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
 
 const AppError = require("./AppError");
-const Product = require("./models/product");
+
+
+const farmRoutes = require("./routes/farms");
+const productRoutes = require("./routes/products");
 // love bank
 mongoose
-  .connect("mongodb://127.0.0.1:27017/farmStand")
-  .then(() => {
-    console.log("Mongoose Connected!");
-  })
-  .catch((err) => {
-    console.log("Failed connecting", err);
-  });
+	.connect("mongodb://127.0.0.1:27017/farmStand2")
+	.then(() => {
+		console.log("Mongoose Connected!");
+	})
+	.catch((err) => {
+		console.log("Failed connecting", err);
+	});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride("_method"));
 app.use(morgan("tiny"));
+app.use("/farms", farmRoutes);
+app.use("/products", productRoutes);
 
 // app.use((req, res, next) => {
 //   console.log("This is my first middleware.");
@@ -36,88 +41,58 @@ app.use(morgan("tiny"));
 //   next();
 // });
 
-function wrapAsync(fn) {
-  return function (req, res, next) {
-    fn(req, res, next).catch((err) => next(err));
-  };
-}
-
-app.get(
-  "/products",
-  wrapAsync(async (req, res, next) => {
-    console.log(req.requestTime);
-    if (req.query) {
-      const products = await Product.find({ category: req.query.category });
-      res.send(products);
-    } else {
-      const products = await Product.find({});
-      res.send(products);
-    }
-  })
-);
-
-app.get(
-  "/products/:id",
-  wrapAsync(async (req, res, next) => {
-    const product = await Product.findById(req.params.id);
-    if (!product) {
-      return next(new AppError("Product Not Found", 404));
-    }
-    res.send(product);
-  })
-);
-
-// app.get("/fly", (req, res) => {
-//   throw new AppError("UNACCEPTABLE!", 406);
-// });
-
-app.post(
-  "/products",
-  wrapAsync(async (req, res, next) => {
-    const product = new Product(req.body);
-    const savedProduct = await product.save();
-    res.send(savedProduct);
-  })
-);
-
-app.put(
-  "/products/:id",
-  wrapAsync(async (req, res, next) => {
-    const updated = await Product.findByIdAndUpdate(req.params.id, req.body, {
-      runValidators: true,
-      new: true,
-    });
-    res.send(updated);
-  })
-);
-
-app.delete(
-  "/products/:id",
-  wrapAsync(async (req, res, next) => {
-    const deleted = await Product.findByIdAndDelete(req.params.id);
-    res.send(deleted);
-  })
-);
-
 app.use((req, res) => {
-  res.status(404).send("Oops, Not found");
+	res.status(404).send("Oops, Not found");
 });
 
 const handleValidationError = (err) => {
-  return new AppError(`Validation Failed...${err.message}`, 400);
+	return new AppError(`Validation Failed...${err.message}`, 400);
 };
 
 app.use((err, req, res, next) => {
-  console.log(err.name);
-  if (err.name === "ValidationError") return next(handleValidationError(err));
-  next(err);
+	if (err.name === "ValidationError") return next(handleValidationError(err));
+	next(err);
 });
 
 app.use((err, req, res, next) => {
-  const { status = 500, message = "ERROR" } = err;
-  res.status(status).send(message);
+	const { status = 500, message = "ERROR" } = err;
+	res.status(status).send(message);
 });
 
 app.listen(3000, () => {
-  console.log("Listening on port 3000");
+	console.log("Listening on port 3000");
 });
+
+// async function updateFarmItem() {
+// 	const items = await Product.find({});
+// 	// console.log(items);
+// 	for (const item of items) {
+// 		console.log(item.farm);
+// 		const farm = await Farm.findById(item.farm);
+
+// 		const products = farm.products;
+// 		console.log(farm.name);
+// 		if (products && !products.includes(item._id)) {
+// 			farm.products.push(item);
+// 			await farm.save();
+// 		}
+// 	}
+// 	console.log("DONE");
+// }
+
+// async function removeNotExist() {
+// 	const farms = await Farm.find({}).populate("products");
+// 	let existingProducts = await Product.find({});
+// 	// console.log(items);
+// 	for (farm of farms) {
+// 		const products = farm.products;
+// 		console.log(farm);
+
+// 		for (product of products) {
+// 			if (!existingProducts.includes(product)) {
+// 				farm.products = farm.products.filter((item) => item !== product);
+// 			}
+// 		}
+// 	}
+// 	console.log("DONE");
+// }
