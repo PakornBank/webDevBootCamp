@@ -18,6 +18,8 @@ app.use(express.json());
 app.use(session({ secret: 'mysecret', resave: false, saveUninitialized: false }));
 app.use('/', registerRoutes);
 
+
+
 app.listen(3000, () => {
     console.log('Listening on port 3000');
 });
