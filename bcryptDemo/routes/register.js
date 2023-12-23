@@ -12,11 +12,11 @@ const requireLogin = (req, res, next) => {
     }
 };
 
-router.get('/secret', requireLogin, wrapAsync((req, res) => {
+router.get('/secret', requireLogin, wrapAsync((req, res, next) => {
     res.send('I ate your hotdog!'); 
 }));
 
-router.post('/register', wrapAsync(async (req, res) => {
+router.post('/register', wrapAsync(async (req, res, next) => {
     const { password, username } = req.body;
     
     const newUser = new User({username,password});
@@ -25,7 +25,7 @@ router.post('/register', wrapAsync(async (req, res) => {
     res.send('Registered!');
 }));
 
-router.post('/login', wrapAsync(async (req, res) => {
+router.post('/login', wrapAsync(async (req, res, next) => {
     const { username, password } = req.body;
 
     const foundUser = await User.findAndValidate(username, password);
@@ -36,7 +36,7 @@ router.post('/login', wrapAsync(async (req, res) => {
     return res.send('Wrong username or password');
 }));
 
-router.post('/logout', wrapAsync((req, res) => {
+router.post('/logout', wrapAsync((req, res, next) => {
     req.session.destroy();
     res.send('Logged out');
 }));
